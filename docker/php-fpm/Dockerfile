@@ -2,7 +2,8 @@ FROM php:8.0-fpm
 
 RUN apt-get update
 RUN yes | apt-get upgrade
-RUN apt-get install -y zlib1g-dev libxml2-dev libzip-dev libicu-dev libpng-dev
+RUN apt-get install -y zlib1g-dev libxml2-dev libzip-dev libicu-dev libpng-dev git zip unzip
+RUN docker-php-ext-install zip
 
 ARG XDEBUG_ENABLE=0
 RUN if [ ${XDEBUG_ENABLE} = 1 ]; then \
