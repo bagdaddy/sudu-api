@@ -14,7 +14,18 @@ return [
     */
 
     'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'email' => [
+        'required' => 'Email is required',
+        'email' => 'Must enter a valid email',
+        'unique' => 'This email already exists',
+    ],
+    'password' => [
+        'required' => 'Password is required',
+        'incorrect' => 'The provided password is incorrect.',
+    ],
+    'nickname' => [
+        'required' => 'A username is required',
+        'unique' => 'This username is already taken',
+    ],
 ];

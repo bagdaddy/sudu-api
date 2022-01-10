@@ -16,10 +16,11 @@ class AlterUserTableAddProfileFields extends Migration
     {
         Schema::table('users', function(Blueprint $table) {
            $table->string('nickname', 20);
-           $table->string('image');
-           $table->text('description');
+           $table->string('image')->nullable()->default(null)->before('created_at');
+           $table->text('description')->nullable()->default(null)->before('created_at');
            $table->enum('country', CountryEnum::getValues())
-               ->default(CountryEnum::LITHUANIA);
+               ->nullable()->default(null)->before('created_at');
+           $table->dropColumn('name');
         });
     }
 
@@ -32,6 +33,7 @@ class AlterUserTableAddProfileFields extends Migration
     {
         Schema::table('users', function(Blueprint $table) {
             $table->dropColumn(['nickname', 'image', 'description', 'country']);
+            $table->string('name');
         });
     }
 }
