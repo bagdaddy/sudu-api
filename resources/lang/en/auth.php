@@ -15,6 +15,7 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'user_not_found' => 'This user was not found',
     'email' => [
         'required' => 'Email is required',
         'email' => 'Must enter a valid email',
@@ -24,7 +25,7 @@ return [
         'required' => 'Password is required',
         'incorrect' => 'The provided password is incorrect.',
     ],
-    'nickname' => [
+    'username' => [
         'required' => 'A username is required',
         'unique' => 'This username is already taken',
     ],

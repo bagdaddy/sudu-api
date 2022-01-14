@@ -22,7 +22,7 @@ class AuthService
     public function login(array $credentials): array
     {
         if (Auth::attempt($credentials)) {
-            $user = $this->userRepository->findById(Auth::id());
+            $user = $this->userRepository->getOneById(Auth::id());
             return ['user' => auth()->user(), 'token' => $this->getUserAuthToken($user)];
         }
 

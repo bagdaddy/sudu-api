@@ -2,21 +2,13 @@
 
 namespace App\Repository;
 
+use App\Dto\UserUpdate;
 use App\Models\User;
 
-class UserRepository implements UserRepositoryInterface
+class UserRepository extends AbstractRepository
 {
-    public function createUser(array $fields)
+    public function getModelClass(): string
     {
-        return User::create([
-            'username' => $fields['username'],
-            'email' => $fields['email'],
-            'password' => $fields['password'],
-        ]);
-    }
-
-    public function findById(int $id)
-    {
-        return User::find($id);
+        return User::class;
     }
 }

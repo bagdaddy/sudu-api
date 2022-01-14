@@ -32,7 +32,7 @@ class AlterUserTableAddProfileFields extends Migration
     public function down()
     {
         Schema::table('users', function(Blueprint $table) {
-            $table->dropColumn(['nickname', 'image', 'description', 'country']);
+            $table->dropColumn(['username', 'image', 'description', 'country']);
             $table->string('name');
         });
     }

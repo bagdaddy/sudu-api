@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\ApiAuthController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/register', [ApiAuthController::class, 'register']);
+Route::post('/login', [ApiAuthController::class, 'login']);
 
 Route::middleware('auth:api')->group(function() {
-    Route::get('/users/{id}', [\App\Http\Controllers\UserController::class, 'getUser']);
+    Route::group(['prefix' => 'user'], function() {
+       Route::get('/', [UserController::class, 'getUser']);
+       Route::get('/{id}', [UserController::class, 'view']);
+       Route::patch('/', [UserController::class, 'update']);
+       Route::post('/change-password', [UserController::class, 'changePassword']);
+    });
+    Route::post('/logout', [ApiAuthController::class, 'logout']);
 });
