@@ -47,4 +47,26 @@ class FriendListController extends Controller
 
         return response()->json(['invite' => $response]);
     }
+
+    public function deleteInvite(int $inviteId, FriendsService $friendsService): JsonResponse
+    {
+        try {
+            $friendsService->deleteInvite($inviteId);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => __('exceptions.invite_not_found')], 400);
+        }
+
+        return response()->json([]);
+    }
+
+    public function deleteFriend(int $friendId, FriendsService $friendsService): JsonResponse
+    {
+        try {
+            $friendsService->deleteFriend($friendId);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => __('exceptions.friend_not_found')], 400);
+        }
+
+        return response()->json([]);
+    }
 }

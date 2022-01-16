@@ -32,6 +32,8 @@ Route::middleware('auth:api')->group(function() {
         Route::get('/sent', [FriendListController::class, 'getSentRequests']);
         Route::get('/requests', [FriendListController::class, 'getPendingRequests']);
         Route::post('/accept/{id}', [FriendListController::class, 'acceptInvite']);
+        Route::delete('/invite/{id}', [FriendListController::class, 'deleteInvite']);
+        Route::delete('/{id}', [FriendListController::class, 'deleteFriend']);
     });
     Route::post('/logout', [ApiAuthController::class, 'logout']);
 });

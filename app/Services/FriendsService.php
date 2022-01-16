@@ -57,4 +57,15 @@ class FriendsService
     {
         return $this->friendsRepository->getFriendsByUserId(Auth::id());
     }
+
+    public function deleteInvite(int $inviteId): void
+    {
+        $this->friendInviteRepository->deleteInvite($inviteId);
+    }
+    
+    public function deleteFriend(int $friendId): void
+    {
+        $userId = Auth::id();
+        $this->friendRepository->deleteFriend($friendId);
+    }
 }
