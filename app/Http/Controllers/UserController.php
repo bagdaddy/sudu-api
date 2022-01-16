@@ -30,7 +30,7 @@ class UserController extends Controller
         $data = $request->validated();
 
         try {
-            $user = $userService->update(Auth::user(), $data);
+            $user = $userService->update(Auth::id(), $data);
         } catch (Exception $e) {
             return response()->json([], 400);
         }

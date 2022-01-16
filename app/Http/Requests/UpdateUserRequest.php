@@ -30,6 +30,7 @@ class UpdateUserRequest extends FormRequest
             'username' => 'string',
             'image' => 'string',
             'country' => [new EnumValue(CountryEnum::class)],
+            'is_public' => 'boolean',
         ];
     }
 }

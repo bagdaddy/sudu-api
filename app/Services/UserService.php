@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Repository\UserRepository;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,8 +27,8 @@ class UserService
     }
 
     /** return User|Model */
-    public function update(Authenticatable $user, array $data): Model
+    public function update(int $userId, array $data): Model
     {
-        return $this->userRepository->save($data, $user);
+        return $this->userRepository->save($data, $this->getById($userId));
     }
 }
