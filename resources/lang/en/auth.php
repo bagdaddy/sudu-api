@@ -28,5 +28,6 @@ return [
     'username' => [
         'required' => 'A username is required',
         'unique' => 'This username is already taken',
+        'regex' => 'Username can only contain upper-case, lower-case letters, numbers and/or _',
     ],
 ];

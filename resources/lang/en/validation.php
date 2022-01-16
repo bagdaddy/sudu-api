@@ -159,4 +159,11 @@ return [
 
     'attributes' => [],
 
+    'friendlist' => [
+        'id' => [
+            'required' => 'A User ID is required',
+            'exists' => 'A User with this ID doesn\'t exist',
+        ],
+    ],
+
 ];
