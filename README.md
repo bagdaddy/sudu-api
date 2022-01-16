@@ -67,8 +67,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Naudojimas
 
-php artisan migrate:fresh -- sudiegia šviežią duombazę
-php artisan passport:install -- susetupina passport'ą. Visada reikia paleisti šviežiai sudiegus duombazę.
-php artisan db:seed --class=Seeder -- įkiša į duombazę aprašytus objektus. Seeder - pasirinktas seederis. Leidžiant komandą be --class argumento bus įvykdomi visi seederiai
-php artisan make:Request SomeRequest -- sukurs App\Http\Requests\SomeRequest klasę. Naudojama validacijai
-docker exec -it -u www-data sudai-api_php_1 bash -- prisijungti prie php docker konteinerio
+`php artisan migrate:fresh` -- sudiegia šviežią duombazę
+`php artisan passport:install` -- susetupina passport'ą. Visada reikia paleisti šviežiai sudiegus duombazę.
+`php artisan db:seed --class=Seeder` -- įkiša į duombazę aprašytus objektus. Seeder - pasirinktas seederis. Leidžiant komandą be --class argumento bus įvykdomi visi seederiai
+`php artisan make:Request SomeRequest` -- sukurs App\Http\Requests\SomeRequest klasę. Naudojama validacijai
+`docker exec -it -u www-data sudai-api_php_1 bash` -- prisijungti prie php docker konteinerio
+
