@@ -56,7 +56,7 @@ class FriendListController extends Controller
             return response()->json(['error' => __('exceptions.invite_not_found')], 400);
         }
 
-        return response()->json([]);
+        return response()->json();
     }
 
     public function deleteFriend(int $friendId, FriendsService $friendsService): JsonResponse
@@ -67,6 +67,6 @@ class FriendListController extends Controller
             return response()->json(['error' => __('exceptions.friend_not_found')], 400);
         }
 
-        return response()->json([]);
+        return response()->json();
     }
 }

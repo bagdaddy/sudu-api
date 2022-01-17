@@ -66,6 +66,6 @@ class FriendsService
     public function deleteFriend(int $friendId): void
     {
         $userId = Auth::id();
-        $this->friendRepository->deleteFriend($friendId);
+        $this->friendsRepository->deleteFriend($userId, $friendId);
     }
 }
