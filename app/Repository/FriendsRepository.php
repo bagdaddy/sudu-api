@@ -33,4 +33,17 @@ class FriendsRepository extends AbstractRepository
     {
         return User::find($id)->friends()->with('friend')->get();
     }
+   
+    public function deleteFriend(int $userId, int $friendId): void
+    {
+        Friend::query()
+        ->where('user_id', '=', $userId)
+        ->where('friend_id', '=', $friendId)
+        ->delete();
+        
+        Friend::query()
+        ->where('user_id', '=', $friendId)
+        ->where('friend_id', '=', $userId)
+        ->delete();
+    }
 }

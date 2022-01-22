@@ -23,28 +23,50 @@ class FriendListController extends Controller
         return response()->json([]);
     }
 
-    public function getSentRequests(FriendsService $friendsService): JsonResponse
+    public function getSentInvites(FriendsService $friendsService): JsonResponse
     {
-        $requests = $friendsService->getSentRequests();
+        $invites = $friendsService->getSentInvites();
 
-        return response()->json($requests);
+        return response()->json($invites);
     }
 
-    public function getPendingRequests(FriendsService $friendsService): JsonResponse
+    public function getPendingInvites(FriendsService $friendsService): JsonResponse
     {
-        $requests = $friendsService->getPendingRequests();
+        $invites = $friendsService->getPendingInvites();
 
-        return response()->json($requests);
+        return response()->json($invites);
     }
 
     public function acceptInvite(int $id, FriendsService $friendsService): JsonResponse
     {
         try {
-            $response = $friendsService->acceptFriendRequest($id);
+            $response = $friendsService->acceptFriendInvite($id);
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => __('exceptions.invite_not_found')], 400);
         }
 
         return response()->json(['invite' => $response]);
+    }
+
+    public function deleteInvite(int $inviteId, FriendsService $friendsService): JsonResponse
+    {
+        try {
+            $friendsService->deleteInvite($inviteId);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => __('exceptions.invite_not_found')], 400);
+        }
+
+        return response()->json();
+    }
+
+    public function deleteFriend(int $friendId, FriendsService $friendsService): JsonResponse
+    {
+        try {
+            $friendsService->deleteFriend($friendId);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => __('exceptions.friend_not_found')], 400);
+        }
+
+        return response()->json();
     }
 }

@@ -16,6 +16,12 @@ class UserController extends Controller
         return response()->json($request->user());
     }
 
+    public function getAllUsers(UserService $userService): JsonResponse
+    {
+        $response = $userService->getAllUsers(Auth::id());
+        return response()->json($response);
+    }
+
     public function view(int $id, UserService $userService): JsonResponse
     {
         try {
