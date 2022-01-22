@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Repository\UserRepository;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,5 +31,10 @@ class UserService
     public function update(int $userId, array $data): Model
     {
         return $this->userRepository->save($data, $this->getById($userId));
+    }
+
+    public function getAllUsers(int $currentId): Collection
+    {
+        return $this->userRepository->getAllUsers($currentId);
     }
 }

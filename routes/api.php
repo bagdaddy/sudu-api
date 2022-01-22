@@ -36,4 +36,5 @@ Route::middleware('auth:api')->group(function() {
         Route::delete('/{id}', [FriendListController::class, 'deleteFriend']);
     });
     Route::post('/logout', [ApiAuthController::class, 'logout']);
+    Route::get('/users', [UserController::class, 'getAllUsers']);
 });
