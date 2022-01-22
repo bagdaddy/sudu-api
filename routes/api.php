@@ -29,8 +29,8 @@ Route::middleware('auth:api')->group(function() {
     Route::group(['prefix' => 'friends'], function() {
         Route::post('/invite', [FriendListController::class, 'sendInvite']);
         Route::get('', [FriendListController::class, 'getList']);
-        Route::get('/sent', [FriendListController::class, 'getSentRequests']);
-        Route::get('/requests', [FriendListController::class, 'getPendingRequests']);
+        Route::get('/sent', [FriendListController::class, 'getSentInvites']);
+        Route::get('/requests', [FriendListController::class, 'getPendingInvites']);
         Route::post('/accept/{id}', [FriendListController::class, 'acceptInvite']);
         Route::delete('/invite/{id}', [FriendListController::class, 'deleteInvite']);
         Route::delete('/{id}', [FriendListController::class, 'deleteFriend']);

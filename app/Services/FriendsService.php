@@ -32,19 +32,19 @@ class FriendsService
         );
     }
 
-    public function getSentRequests(): Collection
+    public function getSentInvites(): Collection
     {
         $userId = Auth::id();
-        return $this->friendInviteRepository->getSentFriendRequestsByUserId($userId);
+        return $this->friendInviteRepository->getSentFriendInvitesByUserId($userId);
     }
 
-    public function getPendingRequests(): Collection
+    public function getPendingInvites(): Collection
     {
         $userId = Auth::id();
-        return $this->friendInviteRepository->getReceivedFriendRequestsByUserId($userId);
+        return $this->friendInviteRepository->getReceivedFriendInvitesByUserId($userId);
     }
 
-    public function acceptFriendRequest(int $inviteId): Model
+    public function acceptFriendInvite(int $inviteId): Model
     {
         $this->friendsRepository->addToFriends($inviteId);
         $res = $this->friendInviteRepository->setPending($inviteId, false);

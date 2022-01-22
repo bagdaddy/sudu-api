@@ -10,8 +10,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
 /**
- * @property Collection $pendingFriendRequests
- * @property Collection $sentFriendRequests
+ * @property Collection $pendingFriendInvites
+ * @property Collection $sentFriendInvites
  * @property Collection $friends
  */
 class User extends Authenticatable
@@ -53,12 +53,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function pendingFriendRequests(): HasMany
+    public function pendingFriendInvites(): HasMany
     {
         return $this->hasMany(FriendInvite::class, 'invitee_id', 'id')->where('is_pending', '=', true);
     }
 
-    public function sentFriendRequests(): HasMany
+    public function sentFriendInvites(): HasMany
     {
         return $this->hasMany(FriendInvite::class, 'user_id', 'id')->where('is_pending', '=', true);
     }

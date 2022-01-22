@@ -15,20 +15,20 @@ class FriendInviteRepository extends AbstractRepository
         return FriendInvite::class;
     }
 
-    public function getSentFriendRequestsByUserId(int $userId): Collection
+    public function getSentFriendInvitesByUserId(int $userId): Collection
     {
         /** @var User $user */
         $user = User::find($userId);
-        return $user->sentFriendRequests()->with(['invitee' => function ($query) {
+        return $user->sentFriendInvites()->with(['invitee' => function ($query) {
             $query->select(['id', 'username']);
         }])->get();
     }
 
-    public function getReceivedFriendRequestsByUserId(int $userId): Collection
+    public function getReceivedFriendInvitesByUserId(int $userId): Collection
     {
         /** @var User $user */
         $user = User::find($userId);
-        return $user->pendingFriendRequests()->with(['user' => function ($query) {
+        return $user->pendingFriendInvites()->with(['user' => function ($query) {
             $query->select(['id', 'username']);
         }])->get();
     }
