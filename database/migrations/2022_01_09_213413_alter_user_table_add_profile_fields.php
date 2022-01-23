@@ -15,11 +15,11 @@ class AlterUserTableAddProfileFields extends Migration
     public function up()
     {
         Schema::table('users', function(Blueprint $table) {
-           $table->string('username', 20);
-           $table->string('image')->nullable()->default(null)->before('created_at');
-           $table->text('description')->nullable()->default(null)->before('created_at');
+           $table->string('username', 20)->after('remember_token');
+           $table->string('image')->nullable()->default(null)->after('username');
+           $table->text('description')->nullable()->default(null)->after('username');
            $table->enum('country', CountryEnum::getValues())
-               ->nullable()->default(null)->before('created_at');
+               ->nullable()->default(null)->after('username');
            $table->dropColumn('name');
         });
     }

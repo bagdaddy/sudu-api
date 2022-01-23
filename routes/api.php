@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\ApiAuthController;
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\FriendListController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,17 @@ Route::middleware('auth:api')->group(function() {
         Route::post('/accept/{id}', [FriendListController::class, 'acceptInvite']);
         Route::delete('/invite/{id}', [FriendListController::class, 'deleteInvite']);
         Route::delete('/{id}', [FriendListController::class, 'deleteFriend']);
+    });
+    Route::group(['prefix' => 'feed'], function() {
+       Route::get('', [FeedController::class, 'getFeed']);
+       Route::post('/comments/{id}', [FeedController::class, 'postComment']);
+       Route::delete('/comments/{id}', [FeedController::class, 'deleteComment']);
+       Route::patch('/comments/{id}', [FeedController::class, 'editComment']);
+       Route::get('/{userId}', [FeedController::class, 'getPosts']);
+       Route::post('/like/{id}', [FeedController::class, 'likeOrUnlikePost']);
+       Route::post('', [FeedController::class, 'createPost']);
+       Route::patch('/{id}', [FeedController::class, 'editPost']);
+       Route::delete('/{id}', [FeedController::class, 'deletePost']);
     });
     Route::post('/logout', [ApiAuthController::class, 'logout']);
     Route::get('/users', [UserController::class, 'getAllUsers']);
